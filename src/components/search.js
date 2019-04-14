@@ -13,9 +13,11 @@ export default class search extends Component {
   render() {
     return (
       <div className="header_0a28e">
+        <div className="container">
           <input className="input_277cf"
               value={this.state.searchText}
               onChange={event => this.onSearchTextChange(event.target.value)}  />
+        </div>
       </div>
     )
   }
