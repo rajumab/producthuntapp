@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const Product = ({product, onVoterIncrease}) => {
+const Product = ({product, onIncreaseVotes}) => {
   console.log("called here: "+product);
     if(!product) {
         return <div>Loading...</div>
@@ -26,7 +26,7 @@ const Product = ({product, onVoterIncrease}) => {
             </div>
           </a>
           <div className="voteButtonWrap_4c515">
-            <button className="button_30e5c smallSize_5216f simpleVariant_8a863 newVoteButton_dac5c" onClick={()=> onVoterIncrease(product)}>
+            <button className="button_30e5c smallSize_5216f simpleVariant_8a863 newVoteButton_dac5c" onClick={()=> onIncreaseVotes(product)}>
               <span className="font_9d927 xSmall_1a46e semiBold_e201b buttonContainer_b6eb3 lineHeight_042f1 underline_57d3c uppercase_a49b4"><div className="icon_f5f81 blackOrange_56e54"></div>
                 <span className="font_9d927 small_231df semiBold_e201b lineHeight_042f1 underline_57d3c">{votes_count}</span>
               </span>
