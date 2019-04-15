@@ -3,6 +3,15 @@ import Product from './product';
 import PropTypes from 'prop-types';
 
 const ProductList = ({products, onIncreaseVotes}) => {
+   if(!products.length) {
+        return (
+        <div className="container content_2d8bd white_09016 hideOverflow_77a4e">
+          <ul className="postsList_b2208">
+              <h3>No Result Found</h3>
+          </ul>
+        </div>
+        )
+    }
     return (
       <div className="container content_2d8bd white_09016 hideOverflow_77a4e">
         <ul className="postsList_b2208">

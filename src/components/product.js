@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
 const Product = ({product, onIncreaseVotes}) => {
-   if(!product) {
-        return <div>Loading...</div>
-    }
+
   const {
     name,
     tagline,
