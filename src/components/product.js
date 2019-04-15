@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
 const Product = ({product, onIncreaseVotes}) => {
-  console.log("called here: "+product);
-    if(!product) {
+   if(!product) {
         return <div>Loading...</div>
     }
   const {

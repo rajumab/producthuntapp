@@ -23,8 +23,6 @@ export default class search extends Component {
   }
 
   onSearchTextChange(searchText){
-    console.log('Search Text', searchText);
-
     this.setState({
         searchText
     });
