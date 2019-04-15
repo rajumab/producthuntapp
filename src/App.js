@@ -6,7 +6,7 @@ import Products from './data/posts';
 
 class App extends Component {
   state = {
-    products: [],
+    products: null,
     selectedProduct: null
   }
 
