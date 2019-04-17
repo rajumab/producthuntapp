@@ -5,9 +5,16 @@ import Search from './components/search';
 import Products from './data/posts';
 
 class App extends Component {
+  
   state = {
-    products: [],
+    products: Products.posts,
+    filteredProducts: [],
     selectedProduct: null
+  }
+  
+  constructor() {
+    super();
+    this.searchTerm = '';
   }
 
   componentDidMount() {
@@ -18,22 +25,23 @@ class App extends Component {
     return (
       <div>
         <Search onSearchChange={term => this.onSearch(term)}/>
-        <ProductList products={this.state.products} onIncreaseVotes={selectedProduct=> this.onIncreaseVotes(selectedProduct)} />
+        <ProductList products={this.state.filteredProducts} onIncreaseVotes={selectedProduct=> this.onIncreaseVotes(selectedProduct)} />
       </div>
     );
   }
 
   onSearch(searchText) {
-      console.log(searchText)
-      this.setState({
-        products: Products.posts.filter(product => product.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1).sort((first, last)=> last.votes_count - first.votes_count)
-      })
+    this.searchTerm = searchText
+    this.setState({
+      filteredProducts: this.state.products.filter(product => product.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1).sort((first, last)=> last.votes_count - first.votes_count)
+    })
   }
 
   onIncreaseVotes(selectedProduct) {
-    console.log(selectedProduct);
+    const tempProducts = this.state.products.map(product => product.id === selectedProduct.id ? Object.assign({}, selectedProduct, {votes_count: selectedProduct.votes_count + 1}) : product).sort((first, last)=>  last.votes_count - first.votes_count);
     this.setState({
-      products: this.state.products.map(product => product.id === selectedProduct.id ? Object.assign({}, selectedProduct, {votes_count: selectedProduct.votes_count + 1}) : product).sort((first, last)=>  last.votes_count - first.votes_count)
+      products: tempProducts,
+      filteredProducts: tempProducts.filter(product => product.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1).sort((first, last)=> last.votes_count - first.votes_count)
     })
   }
 }
