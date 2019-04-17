@@ -6,7 +6,7 @@ import Products from './data/posts';
 
 class App extends Component {
   state = {
-    products: null,
+    products: [],
     selectedProduct: null
   }
 
@@ -24,9 +24,10 @@ class App extends Component {
   }
 
   onSearch(searchText) {
-    this.setState({
-      products: Products.posts.filter(product => product.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1).sort((first, last)=> last.votes_count - first.votes_count)
-    })
+      console.log(searchText)
+      this.setState({
+        products: Products.posts.filter(product => product.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1).sort((first, last)=> last.votes_count - first.votes_count)
+      })
   }
 
   onIncreaseVotes(selectedProduct) {
